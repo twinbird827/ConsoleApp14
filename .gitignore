@@ -1,0 +1,10 @@
+# Visual Studio 2015/2017 cache/options directory
+.vs/
+
+# Build results
+[Bb]in/
+[Oo]bj/
+[Pp]ackages/
+
+# Local files
+[Tt]emp/
