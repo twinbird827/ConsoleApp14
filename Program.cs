@@ -12,6 +12,10 @@ namespace ConsoleApp14
 {
     class Program
     {
+        public static long TotalMemory => GC.GetTotalMemory(false);
+
+        public static string TotalKBString => string.Concat((TotalMemory / 1024).ToString("#,0"), " KB"); 
+
         static bool IsExit { get; set; } = false;
 
         static void Main(string[] args)
@@ -60,8 +64,8 @@ namespace ConsoleApp14
                 {
                     var sb = new StringBuilder();
 
-                    sb.Append($"1\t{pattern.s} {pattern.j}");
-                    Console.WriteLine($"1:{pattern.s} {pattern.j}");
+                    sb.Append($"1\t{TotalKBString}\t{pattern.s}\t{pattern.j}");
+                    Console.WriteLine($"1:{TotalKBString}\t{pattern.s} {pattern.j}");
 
                     var path = Path.Combine(work, System.Guid.NewGuid().ToString()+".db");
                     using (var conn = GetConnection(path, pattern.s, pattern.j))
@@ -99,8 +103,8 @@ namespace ConsoleApp14
                 {
                     var sb = new StringBuilder();
 
-                    sb.Append($"2\t{pattern.s} {pattern.j}");
-                    Console.WriteLine($"2:{pattern.s} {pattern.j}");
+                    sb.Append($"2\t{TotalKBString}\t{pattern.s}\t{pattern.j}");
+                    Console.WriteLine($"2:{TotalKBString}\t{pattern.s} {pattern.j}");
 
                     var path = Path.Combine(work, System.Guid.NewGuid().ToString() + ".db");
                     using (var conn = GetConnection(path, pattern.s, pattern.j))
