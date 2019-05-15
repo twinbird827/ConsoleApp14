@@ -14,7 +14,7 @@ namespace ConsoleApp14
     {
         public static long TotalMemory => GC.GetTotalMemory(false);
 
-        public static string TotalKBString => string.Concat((TotalMemory / 1024).ToString("#,0"), " KB"); 
+        public static string TotalKBString => string.Concat((TotalMemory / 1024).ToString("#,0"), " KB").PadLeft(12); 
 
         static bool IsExit { get; set; } = false;
 
