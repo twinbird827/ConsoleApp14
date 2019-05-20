@@ -90,10 +90,12 @@ namespace ConsoleApp14
                         }
                         sb.Append($"\tSELECT: {stopwatch.Elapsed}");
                         sb.AppendLine();
+
+                        Vaccum(command);
                     }
 
                     File.AppendAllText(logfile, sb.ToString());
-                    File.Delete(path);
+//                    File.Delete(path);
                 }
 
                 /* **************************************************
@@ -137,10 +139,12 @@ namespace ConsoleApp14
                         }
                         sb.Append($"\tSELECT: {stopwatch.Elapsed}");
                         sb.AppendLine();
+
+                        Vaccum(command);
                     }
 
                     File.AppendAllText(logfile, sb.ToString());
-                    File.Delete(path);
+  //                  File.Delete(path);
                 }
             }
         }
@@ -153,7 +157,7 @@ namespace ConsoleApp14
                 DefaultIsolationLevel = System.Data.IsolationLevel.ReadCommitted,
                 SyncMode = sync,
                 JournalMode = jornal,
-                Pooling = false,
+                Pooling = true,
                 CacheSize = 65535
             };
 
@@ -195,6 +199,12 @@ namespace ConsoleApp14
                     sb.AppendLine($"{reader.GetInt32(0)} {reader.GetString(1)}");
                 }
             }
+        }
+
+        static void Vaccum(SQLiteCommand command)
+        {
+            Execute(command, "DELETE FROM test_table");
+            Execute(command, "VACUUM");
         }
     }
 }
