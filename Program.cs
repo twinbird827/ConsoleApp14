@@ -95,7 +95,6 @@ namespace ConsoleApp14
                     }
 
                     File.AppendAllText(logfile, sb.ToString());
-//                    File.Delete(path);
                 }
 
                 /* **************************************************
@@ -144,7 +143,6 @@ namespace ConsoleApp14
                     }
 
                     File.AppendAllText(logfile, sb.ToString());
-  //                  File.Delete(path);
                 }
             }
         }
